@@ -2,11 +2,15 @@ package com.task.library.management.Entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,5 +44,10 @@ public class Fine {
 	private LocalDate dateImpose;
 
 	// MemberID (Foreign Key)
+	// deleting Fine will not Member.
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+			  CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_id", nullable = false)
+	private Member member;
 	
 }
