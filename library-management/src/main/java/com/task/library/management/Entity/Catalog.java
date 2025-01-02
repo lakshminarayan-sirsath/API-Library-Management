@@ -3,6 +3,7 @@ package com.task.library.management.Entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,7 +28,7 @@ public class Catalog {
 	@Column(name = "catalog_id")
 	private Integer catalogId;
 	
-	@Column(name = "catalog_id")
+	@Column(name = "category")
 	private String category;
 	
 	@Column(name = "search_keywords")
@@ -37,7 +38,7 @@ public class Catalog {
 	private String availabilityStatus;
 	
 	// BookID (Foreign Key)
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_id", nullable = false)
 	private Book book;
 
