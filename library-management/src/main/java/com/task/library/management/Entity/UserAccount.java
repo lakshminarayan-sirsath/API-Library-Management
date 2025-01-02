@@ -2,11 +2,14 @@ package com.task.library.management.Entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -42,8 +45,10 @@ public class UserAccount {
 	@Column(name = "role")
 	private String role; // (e.g., Member, Admin)
 	
-	
 	// MemberID (Foreign Key)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "member_id", nullable = false)
+	private Member member;
 
 
 }
