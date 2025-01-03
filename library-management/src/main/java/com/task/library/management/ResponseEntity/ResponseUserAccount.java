@@ -1,5 +1,31 @@
 package com.task.library.management.ResponseEntity;
 
-public class ResponseUserAccount {
+import java.time.LocalDate;
 
+import com.task.library.management.RequestEntity.RequestMember;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class ResponseUserAccount {
+	
+	private Integer accountId;
+
+	private String userName;
+
+	private String password;
+
+	private LocalDate lastLogin; // @@@@@@@@@@@@@@@@
+
+	private String status; // (e.g., Active, Locked)
+
+	private String role; // (e.g., Member, Admin)
+	
+	private RequestMember member; // it can be null, until it will become a member.
 }

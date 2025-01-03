@@ -47,7 +47,7 @@ public class UserAccount {
 	
 	// MemberID (Foreign Key)
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "member_id", nullable = false)
+	@JoinColumn(name = "member_id") // it can be null, until it will become a member.
 	private Member member;
 
 
